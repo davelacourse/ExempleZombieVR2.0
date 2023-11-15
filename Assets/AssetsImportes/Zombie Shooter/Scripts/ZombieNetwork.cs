@@ -4,8 +4,6 @@ using Unity.Netcode;  // Ajout librairie réseau
 
 public class ZombieNetwork : NetworkBehaviour  //change l'héritage pour le behavior réseau
 {
-    public float minSpeed = 1f;
-    public float maxSpeed = 4;
     public AudioClip deathAudio;
     public Transform target;
     private NavMeshAgent agent;
@@ -59,6 +57,7 @@ public class ZombieNetwork : NetworkBehaviour  //change l'héritage pour le beha
                 }
             }
 
+            agent.speed = GameManagerZombie.Instance.VitesseZombie;
             agent.SetDestination(target.position);
 
             

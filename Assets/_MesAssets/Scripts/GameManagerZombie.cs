@@ -12,6 +12,10 @@ public class GameManagerZombie : MonoBehaviour
     private int _zombieTues = 0;
     public int ZombieTues => _zombieTues;
 
+    private float _vitesseZombie = 1f;
+    public float VitesseZombie => _vitesseZombie;
+
+
     private void Awake()
     {
         Instance = this;
@@ -26,10 +30,20 @@ public class GameManagerZombie : MonoBehaviour
     private void Update()
     {
         _timer += Time.deltaTime;
+        
     }
 
     public void AugmenterZombies()
     {
         _zombieTues++;
+        if (_zombieTues % 10 == 0) 
+        {
+            Spawner.Instance.ReduireSpawnTime();
+            _vitesseZombie += 0.1f;
+        }
     }
+
+    
+
+
 }

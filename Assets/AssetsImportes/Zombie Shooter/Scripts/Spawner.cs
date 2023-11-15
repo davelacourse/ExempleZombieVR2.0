@@ -5,12 +5,21 @@ using Unity.Netcode;  // ajoute la librairie réseau
 
 public class Spawner : NetworkBehaviour  // change la classe hérité
 {
-    public float spawnTime = 1;
+    public static Spawner Instance;
+
+    [SerializeField] private float spawnTime = 1;
+    public float SpawnTime => spawnTime;
+    
+
     public GameObject spawnGameObject;
     public Transform[] spawnPoints;
     private float timer;
 
-    // Update is called once per frame
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Update()
     {
         if(timer > spawnTime)
@@ -30,6 +39,11 @@ public class Spawner : NetworkBehaviour  // change la classe hérité
             timer = 0;
         }
         timer += Time.deltaTime;
+    }
+
+    public void ReduireSpawnTime()
+    {
+        spawnTime -= spawnTime / 4;
     }
 }
 

@@ -14,7 +14,11 @@ public class Limb : MonoBehaviour
             zombieParent.Death();  
 
         //Destroy the bullet
-        Destroy(hitby);
+        if(hitby.tag == "Weapon")
+        {
+            Destroy(hitby);
+        }
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -24,7 +28,7 @@ public class Limb : MonoBehaviour
         if (!NetworkManager.Singleton.IsServer) 
             return;
         
-        if (collision.gameObject.CompareTag("Weapon"))
+        if (collision.gameObject.CompareTag("Weapon") || collision.gameObject.CompareTag("Axe"))
             Hit(collision.gameObject);
     }
 }
