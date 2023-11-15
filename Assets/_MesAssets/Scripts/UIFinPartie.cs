@@ -13,6 +13,6 @@ public class UIFinPartie : MonoBehaviour
     private void Start()
     {
         _txtTemps.text = "Temps : " + TimeSpan.FromSeconds(PlayerPrefs.GetFloat("Temps")).ToString("mm\\:ss\\.ff"); 
-        _txtZombies.text = "Zombies : " + PlayerPrefs.GetInt("Zombies").ToString(); 
+        _txtZombies.text = "Zombies : " + PlayerPrefs.GetInt("Zombie").ToString(); 
     }
 }
