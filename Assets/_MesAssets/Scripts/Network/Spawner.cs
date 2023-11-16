@@ -10,9 +10,9 @@ public class Spawner : NetworkBehaviour  // change la classe hérité
     [SerializeField] private float spawnTime = 1;
     public float SpawnTime => spawnTime;
     
-
-    public GameObject spawnGameObject;
-    public Transform[] spawnPoints;
+    [SerializeField] private GameObject spawnGameObject;
+    [SerializeField] private Transform[] spawnPoints;
+    
     private float timer;
 
     private void Awake()
@@ -41,6 +41,7 @@ public class Spawner : NetworkBehaviour  // change la classe hérité
         timer += Time.deltaTime;
     }
 
+    // Méthode appellé pour réduire le temps de spawn en 4
     public void ReduireSpawnTime()
     {
         spawnTime -= spawnTime / 4;

@@ -4,18 +4,14 @@ using Unity.Netcode;  // Ajout librairie réseau
 
 public class ZombieNetwork : NetworkBehaviour  //change l'héritage pour le behavior réseau
 {
-    public AudioClip deathAudio;
-    public Transform target;
+    [SerializeField] private AudioClip deathAudio;
+    
     private NavMeshAgent agent;
     private Rigidbody[] rbs;
-
-
     private AvatarReseau[] _players;
+    private Transform target;
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rbs = GetComponentsInChildren<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
@@ -35,13 +31,11 @@ public class ZombieNetwork : NetworkBehaviour  //change l'héritage pour le beha
             target = null;
             agent.enabled = false;
         }
-        
-
+  
         DisactivateRagdoll();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (IsServer)
         {
@@ -71,7 +65,6 @@ public class ZombieNetwork : NetworkBehaviour  //change l'héritage pour le beha
                     NetworkSceneTransition.Instance.ChargerScenePourTous("Zombie Fin");
                 }
             }
-
         }
     }
 
@@ -98,7 +91,6 @@ public class ZombieNetwork : NetworkBehaviour  //change l'héritage pour le beha
         AudioSource audioS = GetComponent<AudioSource>();
         audioS.loop = false;
         audioS.PlayOneShot(deathAudio);
-
         
         Destroy(this);
     }

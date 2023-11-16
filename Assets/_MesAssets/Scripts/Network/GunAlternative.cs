@@ -13,9 +13,10 @@ public class GunAlternative : NetworkBehaviour
 
     public void Fire()
     {
-        //cast bullet locally (fast)
+        //Méthode appelé localement pour créer l'instanciation
         ActualFire(barrel.position, barrel.rotation, barrel.forward);
 
+        //Appelle la méthodep our instancier le bullet pour tous les autres joueurs réseau
         FireServerRpc(barrel.position, barrel.rotation, barrel.forward, NetworkManager.LocalClientId);
     }
 

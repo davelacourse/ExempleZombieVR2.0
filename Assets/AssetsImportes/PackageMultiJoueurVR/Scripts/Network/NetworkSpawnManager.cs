@@ -18,7 +18,11 @@ public class NetworkSpawnManager : NetworkBehaviour
 
     public override void OnDestroy()
     {
-        NetworkManager.Singleton.OnClientConnectedCallback -= Singleton_OnClientConnectedCallback;
+        if(NetworkManager.Singleton != null)
+        {
+            NetworkManager.Singleton.OnClientConnectedCallback -= Singleton_OnClientConnectedCallback;
+        }
+        
     }
 
     // Méthode appeler lors de la connection d'un client on reçoit en paramètre l'ID du client

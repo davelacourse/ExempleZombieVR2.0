@@ -21,12 +21,6 @@ public class GameManagerZombie : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
-    {
-        PlayerPrefs.SetInt("PartieEnCours", 1);
-        PlayerPrefs.Save();
-    }
-
     private void Update()
     {
         _timer += Time.deltaTime;
@@ -42,8 +36,4 @@ public class GameManagerZombie : MonoBehaviour
             _vitesseZombie += 0.1f;
         }
     }
-
-    
-
-
 }

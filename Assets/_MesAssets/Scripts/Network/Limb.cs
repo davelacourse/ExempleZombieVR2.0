@@ -13,12 +13,11 @@ public class Limb : MonoBehaviour
             // On veux qu'elle soit appeler sur tous les clients
             zombieParent.Death();  
 
-        //Destroy the bullet
+        //Détruit l'objet si c'est une balle
         if(hitby.tag == "Weapon")
         {
             Destroy(hitby);
         }
-        
     }
 
     private void OnCollisionEnter(Collision collision)
