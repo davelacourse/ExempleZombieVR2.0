@@ -11,6 +11,7 @@ public class UIManagerLobby : MonoBehaviour
     [SerializeField] private GameObject _rejoindreLobby = default;
     [SerializeField] private GameObject _salleAttente = default;
     [SerializeField] private GameObject _chargement = default;
+    [SerializeField] private GameObject _mirroir = default;
 
     [Header("Boutons")]
     [SerializeField] private Button _partieRapideButton = default;
@@ -47,8 +48,11 @@ public class UIManagerLobby : MonoBehaviour
 
     private void OnDestroy()
     {
-        NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnected;
-        NetworkManager.Singleton.OnClientDisconnectCallback -= OnClientDisconnected;
+        if(NetworkManager.Singleton != null)
+        {
+            NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnected;
+            NetworkManager.Singleton.OnClientDisconnectCallback -= OnClientDisconnected;
+        }
     }
 
     // Cette méthode est appeler par tous les clients et l'host lors de la déconnexion
@@ -73,6 +77,7 @@ public class UIManagerLobby : MonoBehaviour
         if (obj == NetworkManager.Singleton.LocalClientId)
         {
             ActiverUI(4);
+            _mirroir.SetActive(true);
         }
     }
 
@@ -85,6 +90,11 @@ public class UIManagerLobby : MonoBehaviour
         {
             uiElements[i].SetActive(i == index);
         }
+    }
+
+    public void Quitter()
+    {
+        Application.Quit();
     }
 }
 

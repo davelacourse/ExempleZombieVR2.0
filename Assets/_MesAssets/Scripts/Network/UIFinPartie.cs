@@ -12,7 +12,7 @@ public class UIFinPartie : MonoBehaviour
 
     private void Start()
     {
-        _txtTemps.text = "Temps : " + TimeSpan.FromSeconds(PlayerPrefs.GetFloat("Temps")).ToString("mm\\:ss\\.ff"); 
-        _txtZombies.text = "Zombies : " + PlayerPrefs.GetInt("Zombie").ToString(); 
+        _txtTemps.text = "Temps : " + TimeSpan.FromSeconds(GameManagerZombie.Instance.Timer).ToString("mm\\:ss\\.ff");
+        _txtZombies.text = "Zombies : " + GameManagerZombie.Instance.ZombieTues.ToString();
     }
 }

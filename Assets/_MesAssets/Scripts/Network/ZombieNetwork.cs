@@ -60,8 +60,6 @@ public class ZombieNetwork : NetworkBehaviour  //change l'héritage pour le beha
             {
                 if (Vector3.Distance(player.transform.position, transform.position) < 1f)
                 {
-                    PlayerPrefs.SetInt("Zombie", GameManagerZombie.Instance.ZombieTues);
-                    PlayerPrefs.SetFloat("Temps", GameManagerZombie.Instance.Timer);
                     NetworkSceneTransition.Instance.ChargerScenePourTous("Zombie Fin");
                 }
             }
